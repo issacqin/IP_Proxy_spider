@@ -54,9 +54,10 @@ def ip_format(read_path, save_path):
         lines = fr.readlines()
         fr.close()
     for line in lines:
-        new_line = line.split("___")
-        ip_format_line = new_line[0].replace(" ", "") + ":" + new_line[1] + "\n"
-        data_list.append(ip_format_line)
+        if len(line) > 10 :
+            new_line = line.split("___")
+            ip_format_line = new_line[0].replace(" ", "") + ":" + new_line[1] + "\n"
+            data_list.append(ip_format_line)
     with open(save_path, "a") as fs:
         for i in range(len(data_list)):
             fs.write(data_list[i])
